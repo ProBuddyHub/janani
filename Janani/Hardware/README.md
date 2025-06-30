@@ -111,13 +111,9 @@ Every year, thousands of women and newborns in India face complications due to i
 
 ## 🧪 Project Stage
 
-Current Status: ✅ **Prototype Design Stage**
+Current Status: ✅ **Idea/Concept Stage**
 
-We are building:
-- Hardware prototype and connectivity test
-- App wireframe and GPT assistant logic
-- Red-zone campaign model and awareness plan
-
+Due to lack of funds, we are just sketching the circuit diagrams and researching on various possibilities.
 ---
 
 ## 🤝 Acknowledgement
