@@ -1,0 +1,14 @@
+/* dashboard.css */
+
+.section {
+  display: none;
+}
+.section.active {
+  display: block;
+}
+
+#comingSoonToast {
+  font-weight: 500;
+  pointer-events: none;
+}
+

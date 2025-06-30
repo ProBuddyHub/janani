@@ -1,0 +1,79 @@
+/* chat.css */
+
+/* General enhancements */
+body {
+  background-color: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Chat box styling */
+#chatBox {
+  scroll-behavior: smooth;
+}
+
+/* Chat bubbles */
+.message {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #dbeafe;
+  align-self: flex-end;
+  text-align: right;
+  border-bottom-right-radius: 4px;
+  color: #1e3a8a;
+}
+
+.message.bot {
+  background-color: #fef3c7;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  color: #92400e;
+}
+
+/* Input + send button styling */
+input#userInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Typing indicator */
+#typingIndicator {
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* Suggestion buttons (if you add later) */
+.suggestion-btn {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-btn:hover {
+  background-color: #e0f2fe;
+}
+
+/* Smooth fade animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  animation: fadeInUp 0.3s ease-in-out;
+}
+

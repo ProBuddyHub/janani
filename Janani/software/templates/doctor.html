@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Doctor Verification | Janani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/doctor.css" />
+</head>
+<body class="bg-blue-100 text-gray-800 font-sans overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md">
+    <div class="flex items-center space-x-2">
+      <img src="/static/assets/janani.png" alt="Janani Logo" class="h-8" />
+      <span class="text-lg font-semibold">JANANI</span>
+    </div>
+    <div class="text-sm text-blue-600 font-medium">
+      <i class="fas fa-stethoscope mr-2"></i>Doctor Verification
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex justify-center items-center min-h-[calc(100vh-80px)] p-6">
+    <div class="bg-white w-full max-w-5xl rounded-lg shadow-xl flex flex-col md:flex-row p-8 gap-6 items-center">
+
+      <!-- Doctor Animation -->
+      <div class="w-full md:w-1/2">
+        <lord-icon  
+  src="https://cdn.lordicon.com/zpxybbhl.json"  
+  trigger="loop"  
+  colors="primary:#121331,secondary:#08a88a"  
+  style="width:200px;height:200px">  
+</lord-icon>
+
+      </div>
+
+      <!-- Doctor Code Form -->
+      <div class="w-full md:w-1/2">
+        <form id="doctorForm" class="space-y-5">
+          <h2 class="text-2xl font-bold mb-2"><i class="fas fa-user-md mr-2 text-blue-600"></i>Doctor Code</h2>
+          <p class="text-sm text-gray-600 mb-4">Enter your verification code to proceed</p>
+          
+          <!-- Error Message -->
+          <div id="flashBox" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative">
+            <i class="fas fa-exclamation-circle mr-2"></i><span id="flashMsg">Invalid code</span>
+          </div>
+
+          <!-- Input -->
+          <input type="text" id="doctor_code"
+                 placeholder="Enter your code (e.g., DR123)"
+                 class="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                 required />
+
+          <!-- Button -->
+          <button type="submit"
+                  class="w-full bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
+            <i class="fas fa-check-circle mr-2"></i>Verify & Continue
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Custom Script -->
+  <script src="/static/js/doctor.js"></script>
+</body>
+</html>
+

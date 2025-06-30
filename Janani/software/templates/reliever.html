@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stress Reliever | Janani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/reliever.css">
+</head>
+<body class="transition-colors duration-1000 bg-blue-100">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold text-blue-600"><i class="fas fa-stethoscope mr-2"></i>Janani</div>
+    <ul class="flex space-x-4 text-sm font-medium">
+      <li><a href="/dashboard" class="hover:text-blue-500"><i class="fas fa-tachometer-alt mr-1"></i>Dashboard</a></li>
+      <li><a href="/videos" class="hover:text-blue-500"><i class="fas fa-video mr-1"></i>Videos</a></li>
+      <li><a href="/chat" class="hover:text-blue-500"><i class="fas fa-comments mr-1"></i>Talk to Janani</a></li>
+      <li><a href="/reports" class="hover:text-blue-500"><i class="fas fa-file-alt mr-1"></i>Reports</a></li>
+      <li><a href="/profile" class="hover:text-blue-500"><i class="fas fa-user-circle mr-1"></i>Profile</a></li>
+      <li><a href="/settings" class="hover:text-blue-500"><i class="fas fa-cog mr-1"></i>Settings</a></li>
+      <li><a href="/contact" class="hover:text-blue-500"><i class="fas fa-phone mr-1"></i>Contact Us</a></li>
+      <li><a href="/reliever" class="hover:text-blue-500"><i class="fas fa-spa mr-1"></i>Reliever</a></li>
+    </ul>
+  </nav>
+
+  <!-- Soothing Music (hidden) -->
+  <audio id="relaxingMusic" autoplay loop>
+    <source src="/static/audio/soothing-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Main Content -->
+  <main class="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+
+    <!-- Rotating Disc -->
+    <div class="my-10">
+      <div id="rotatingDisc" class="w-48 h-48 rounded-full border-8 border-blue-300 flex items-center justify-center shadow-lg">
+        <img src="https://cdn-icons-png.flaticon.com/512/2823/2823026.png" alt="Music Disc" class="w-24 h-24 object-contain animate-spin-slow">
+      </div>
+      <p class="mt-4 text-lg font-semibold text-blue-700">Let the calm wash over you...</p>
+    </div>
+
+    <!-- Games Toggle Button (bottom-right floating) -->
+    <button id="openGames" class="fixed bottom-6 right-6 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-lg transition">
+      <i class="fas fa-gamepad text-xl"></i>
+    </button>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="/static/js/reliever.js"></script>
+</body>
+</html>
+

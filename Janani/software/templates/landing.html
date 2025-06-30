@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Janani | QR Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 text-gray-800 font-sans overflow-x-hidden min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md z-20">
+    <div class="flex items-center gap-3">
+      <img src="/static/assets/janani.png" alt="Janani Logo" class="h-9 w-9 object-contain">
+      <span class="text-2xl font-bold text-blue-700 tracking-wide">Janani</span>
+    </div>
+    <div class="relative">
+      <button id="langBtn" class="text-sm bg-gray-100 px-3 py-1.5 rounded-md flex items-center gap-2 shadow hover:bg-gray-200">
+        <i class="fas fa-globe"></i>
+        <span id="currentLang">English</span>
+        <i class="fas fa-chevron-down text-xs"></i>
+      </button>
+      <ul id="langList" class="absolute right-0 mt-2 w-36 bg-white border rounded shadow hidden z-30">
+        <li onclick="changeLang('en')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">English</li>
+        <li onclick="changeLang('hi')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Hindi</li>
+        <li onclick="changeLang('te')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Telugu</li>
+        <li onclick="changeLang('ta')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Tamil</li>
+        <li onclick="changeLang('ml')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Malayalam</li>
+        <li onclick="changeLang('kn')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Kannada</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex justify-center items-center p-6">
+    <div class="bg-white w-full max-w-6xl rounded-xl shadow-xl flex flex-col md:flex-row items-center p-8 gap-10 transition-all">
+
+      <div class="w-full md:w-1/2 flex justify-center">
+  <!-- Example Icon: Scan QR Code -->
+  <lottie-player
+  src="/static/assets/illustrations/animations_json/doctors.json"
+  background="transparent"
+  speed="1"
+  style="width: 100%; max-width: 400px; height: auto;"
+  loop
+  autoplay>
+</lottie-player>
+
+
+</div>
+
+
+
+      <!-- Scan QR CTA -->
+      <div class="w-full md:w-1/2 text-center md:text-left space-y-5">
+        <h2 class="text-3xl font-bold text-blue-800" data-i18n="welcome">Welcome</h2>
+        <p class="text-gray-600 text-lg" data-i18n="instruction">Scan your QR code to begin the journey with Janani.</p>
+        <button id="startScan" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition inline-flex items-center text-base font-medium">
+          <i class="fas fa-qrcode mr-2 text-xl"></i>
+          <span data-i18n="scan_button">Scan QR Code</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- QR Scanner Overlay -->
+  <div id="scanner" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
+    <div class="relative bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+      <button onclick="closeScanner()" class="absolute -top-3 -right-3 bg-red-500 text-white rounded-full w-8 h-8 text-xl flex items-center justify-center shadow-lg hover:bg-red-600">
+        ✖
+      </button>
+      <div id="qr-reader" class="w-72 h-72 border-4 border-green-500 rounded-lg mb-4"></div>
+      <input type="file" accept="image/*" id="galleryInput" class="hidden">
+      <button onclick="openGallery()" class="mt-2 text-blue-600 bg-gray-100 px-4 py-2 rounded shadow hover:bg-blue-50">
+        <i class="fas fa-image mr-1"></i> From Gallery
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/landing.js"></script>
+  <script src="/static/js/html5-qrcode.min.js"></script>
+</body>
+</html>
+

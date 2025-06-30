@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Janani Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2947/2947965.png" type="image/png">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold text-blue-600"><i class="fas fa-stethoscope mr-2"></i>Janani</div>
+    <ul class="flex space-x-4 text-sm font-medium">
+      <li><a onclick="showSection('dashboard')" class="hover:text-blue-500"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+      <li><a onclick="showSection('videos')" class="hover:text-blue-500"><i class="fas fa-video mr-1"></i>Videos</a></li>
+      <li><a onclick="showSection('chat')" class="hover:text-blue-500"><i class="fas fa-comments mr-1"></i>Talk to Janani</a></li>
+      <li><a onclick="showSection('reports')" class="hover:text-blue-500"><i class="fas fa-file-alt mr-1"></i>Reports</a></li>
+      <li><a onclick="showSection('profile')" class="hover:text-blue-500"><i class="fas fa-user-circle"></i>Profile</a></li>
+      <li><a onclick="showSection('settings')" class="hover:text-blue-500"><i class="fas fa-cog mr-1"></i>Settings</a></li>
+      <li><a onclick="showSection('contact')" class="hover:text-blue-500"><i class="fas fa-phone mr-1"></i>Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <main class="p-6 max-w-6xl mx-auto">
+    <h1 class="text-2xl font-semibold mb-6">Welcome, {{ user }}!</h1>
+    
+<!-- DASHBOARD OVERVIEW -->
+<div id="dashboard" class="section active">
+  <h2 class="text-xl font-bold mb-4">Health Overview</h2>
+
+  <!-- Summary Boxes -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white p-4 rounded shadow text-center">
+      <p class="text-sm text-gray-600">Blood Pressure</p>
+      <p class="text-xl font-semibold text-blue-600">120/80</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow text-center">
+      <p class="text-sm text-gray-600">Heart Rate</p>
+      <p class="text-xl font-semibold text-green-600">78 bpm</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow text-center">
+      <p class="text-sm text-gray-600">Weight</p>
+      <p class="text-xl font-semibold text-purple-600">62 kg</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow text-center">
+      <p class="text-sm text-gray-600">Glucose</p>
+      <p class="text-xl font-semibold text-red-500">95 mg/dL</p>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Blood Pressure Line Chart -->
+    <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-sm font-semibold mb-2 text-gray-700">Blood Pressure Over Time</h3>
+      <canvas id="bpChart" class="w-full h-64"></canvas>
+    </div>
+
+    <!-- Health Checks Completion -->
+    <div class="bg-white p-4 rounded shadow">
+      <h3 class="text-sm font-semibold mb-2 text-gray-700">Health Checks Completion</h3>
+      <canvas id="checksChart" class="w-full h-64"></canvas>
+    </div>
+
+    <!-- Weight Bar Chart -->
+    <div class="bg-white p-4 rounded shadow md:col-span-2">
+      <h3 class="text-sm font-semibold mb-2 text-gray-700">Weight Tracking (kg)</h3>
+      <canvas id="weightChart" class="w-full h-64"></canvas>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Videos -->
+    <div id="videos" class="section active">
+      <h2 class="text-xl font-bold mb-4">Videos in Your Language</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/BgUfd7cRo-M" allowfullscreen></iframe>
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/TXSOitGoINE" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Chat -->
+    <div id="chat" class="section hidden">
+      <h2 class="text-xl font-bold mb-4">Talk to Janani</h2>
+      <div class="bg-white p-4 rounded shadow-md">
+        <div id="chatBox" class="h-64 overflow-y-auto border p-2 mb-4 text-sm bg-gray-50"></div>
+        <input type="text" id="userInput" class="border px-3 py-2 w-full" placeholder="Type your question..." onkeydown="if(event.key === 'Enter') sendMessage()">
+      </div>
+    </div>
+
+    <!-- Reports -->
+    <div id="reports" class="section hidden">
+      <h2 class="text-xl font-bold mb-4">Reports</h2>
+      <table class="table-auto w-full bg-white rounded shadow text-sm">
+        <thead class="bg-blue-100">
+          <tr>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Measurement</th>
+            <th class="px-4 py-2">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="px-4 py-2">2025-06-22</td><td>Blood Pressure</td><td>120/80</td></tr>
+          <tr><td class="px-4 py-2">2025-06-23</td><td>Glucose Level</td><td>95 mg/dL</td></tr>
+          <tr><td class="px-4 py-2">2025-06-24</td><td>Weight</td><td>60 kg</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- PROFILE SECTION -->
+<div id="profile" class="section hidden">
+  <h2 class="text-xl font-bold mb-4">Your Profile</h2>
+
+  <div class="bg-white p-6 rounded shadow max-w-2xl">
+    <div class="grid md:grid-cols-2 gap-4">
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+        <p class="bg-gray-100 px-4 py-2 rounded mt-1">Lakshmi Devi</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Age</label>
+        <p class="bg-gray-100 px-4 py-2 rounded mt-1">27</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Gender</label>
+        <p class="bg-gray-100 px-4 py-2 rounded mt-1">Female</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Pregnancy Status</label>
+        <p class="bg-gray-100 px-4 py-2 rounded mt-1">3rd Trimester</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Location</label>
+        <p class="bg-gray-100 px-4 py-2 rounded mt-1">Srikakulam, Andhra Pradesh</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Health ID / QR Code</label>
+        <p class="bg-gray-100 px-4 py-2 rounded mt-1">QR002</p>
+      </div>
+    </div>
+
+    <div class="mt-6 text-right">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <i class="fas fa-pen mr-1"></i>Edit Profile
+      </button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Settings -->
+    <div id="settings" class="section hidden">
+      <h2 class="text-xl font-bold mb-4">Settings</h2>
+      <div class="bg-white p-4 rounded shadow">
+        <label class="block mb-3">
+          Language:
+          <select class="ml-2 border px-2 py-1">
+            <option>English</option>
+            <option>हिंदी</option>
+            <option>తెలుగు</option>
+            <option>தமிழ்</option>
+            <option>മലയാളം</option>
+            <option>ಕನ್ನಡ</option>
+          </select>
+        </label>
+        <label class="block mb-3">
+          <input type="checkbox" class="mr-2"> Enable notifications
+        </label>
+        <button onclick="confirmLogout()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          <i class="fas fa-sign-out-alt mr-1"></i> Sign Out
+        </button>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="section hidden">
+      <h2 class="text-xl font-bold mb-4">Contact Us</h2>
+      <div class="bg-white p-4 rounded shadow">
+        <p>Email: support@janani.ai</p>
+        <p>Phone: +91 98765 43210</p>
+        <p class="mt-2">For urgent queries, use the Janani chatbot or visit the nearest health center.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- External JS -->
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
+

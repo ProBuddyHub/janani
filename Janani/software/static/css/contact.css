@@ -1,0 +1,48 @@
+/* Contact Page Specific Styling */
+
+/* Inputs and textareas */
+input[type="text"],
+input[type="email"],
+textarea {
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #ccc;
+  outline: none;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Button hover animation */
+button.bg-blue-600 {
+  transition: all 0.3s ease;
+}
+button.bg-blue-600:hover {
+  transform: scale(1.03);
+}
+
+/* Floating animation for tip image */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Footer responsiveness */
+@media (max-width: 640px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+}
+

@@ -1,0 +1,108 @@
+/* Profile Page Specific Styles */
+
+/* Animate the footer illustration */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Profile Card Info Layout */
+.grid div {
+  padding: 4px 0;
+}
+
+/* Button hover scaling */
+a.bg-blue-600 {
+  transition: all 0.2s ease-in-out;
+}
+a.bg-blue-600:hover {
+  transform: scale(1.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+}
+
+/* Optional: Increase space for headings */
+h2 {
+  margin-top: 1rem;
+}
+
+/* profile.css */
+
+/* General Typography & Layout Tweaks */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f9ff;
+}
+
+h2, h3 {
+  font-weight: 600;
+}
+
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Section Headers */
+section h2,
+section h3 {
+  border-left: 4px solid #38bdf8;
+  padding-left: 12px;
+}
+
+/* Key:Value Display Style */
+section p strong {
+  color: #334155;
+  display: inline-block;
+  width: 240px;
+}
+
+/* Responsive Wrapping on Smaller Devices */
+@media (max-width: 640px) {
+  section p strong {
+    width: auto;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Footer */
+footer {
+  background-color: #e0ffff;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #cbd5e1;
+  position: relative;
+}
+
+footer p {
+  color: #4b5563;
+  font-style: italic;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+footer img {
+  width: 48px;
+  height: 48px;
+}
+

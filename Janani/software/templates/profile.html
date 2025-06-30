@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile | Janani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/profile.css" />
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold text-blue-600"><i class="fas fa-stethoscope mr-2"></i>Janani</div>
+    <ul class="flex space-x-4 text-sm font-medium">
+      <li><a href="/dashboard" class="hover:text-blue-500"><i class="fas fa-tachometer-alt mr-1"></i>Dashboard</a></li>
+      <li><a href="/videos" class="hover:text-blue-500"><i class="fas fa-video mr-1"></i>Videos</a></li>
+      <li><a href="/chat" class="hover:text-blue-500"><i class="fas fa-comments mr-1"></i>Talk to Janani</a></li>
+      <li><a href="/reports" class="hover:text-blue-500"><i class="fas fa-file-alt mr-1"></i>Reports</a></li>
+      <li><a href="/profile" class="hover:text-blue-500"><i class="fas fa-user-circle mr-1"></i>Profile</a></li>
+      <li><a href="/settings" class="hover:text-blue-500"><i class="fas fa-cog mr-1"></i>Settings</a></li>
+      <li><a href="/contact" class="hover:text-blue-500"><i class="fas fa-phone mr-1"></i>Contact Us</a></li>
+      <li><a href="/reliever" class="hover:text-blue-500"><i class="fas fa-spa mr-1"></i>Reliever</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Profile Section -->
+  <main class="flex-grow container mx-auto px-6 py-8">
+    <h2 class="text-2xl font-semibold mb-6 text-blue-700">Patient Profile Overview</h2>
+
+    <!-- Profile Information Card -->
+    <div id="profileCard" class="bg-white shadow-md rounded-lg p-6 space-y-4 border border-blue-200">
+      
+      <!-- Name & Age -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p><strong>Full Name:</strong> <span id="fullName">Loading...</span></p>
+        <p><strong>Age:</strong> <span id="age">Loading...</span></p>
+      </div>
+
+      <!-- Phone & Location -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p><strong>Phone Number:</strong> <span id="phone">Loading...</span></p>
+        <p><strong>Location:</strong> <span id="location">Loading...</span></p>
+      </div>
+
+      <!-- Marital Status & Education -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p><strong>Marital Status:</strong> <span id="maritalStatus">Loading...</span></p>
+        <p><strong>Education:</strong> <span id="education">Loading...</span></p>
+      </div>
+
+      <!-- Occupation & Working Status -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p><strong>Occupation:</strong> <span id="occupation">Loading...</span></p>
+        <p><strong>Currently Working:</strong> <span id="working">Loading...</span></p>
+      </div>
+
+      <!-- Languages -->
+      <div>
+        <p><strong>Languages Known:</strong> <span id="languages">Loading...</span></p>
+      </div>
+    </div>
+    
+    <!-- Vitals & Medical History -->
+<div class="bg-white shadow-md rounded-lg p-6 mt-8 space-y-4 border border-blue-200">
+  <h3 class="text-xl font-semibold text-blue-700 mb-4">Vitals & Medical History</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>Height:</strong> <span id="height">Loading...</span> cm</p>
+    <p><strong>Weight:</strong> <span id="weight">Loading...</span> kg</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>Blood Pressure:</strong> <span id="bp">Loading...</span></p>
+    <p><strong>Blood Sugar:</strong> <span id="sugar">Loading...</span> mg/dL</p>
+  </div>
+
+  <div>
+    <p><strong>Pre-existing Conditions:</strong> <span id="conditions">Loading...</span></p>
+  </div>
+
+  <div>
+    <p><strong>Family Medical History:</strong> <span id="familyHistory">Loading...</span></p>
+  </div>
+
+  <div>
+    <p><strong>Known Allergies:</strong> <span id="allergies">Loading...</span></p>
+  </div>
+</div>
+
+<!-- Pregnancy Details -->
+<div class="bg-white shadow-md rounded-lg p-6 mt-8 space-y-4 border border-pink-200">
+  <h3 class="text-xl font-semibold text-pink-700 mb-4">Pregnancy Details</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>Pregnancy Stage:</strong> <span id="pregnancyStage">Loading...</span></p>
+    <p><strong>Expected Delivery Date:</strong> <span id="edd">Loading...</span></p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>No. of Previous Pregnancies (Gravida):</strong> <span id="gravida">Loading...</span></p>
+    <p><strong>No. of Live Births (Para):</strong> <span id="para">Loading...</span></p>
+  </div>
+
+  <div>
+    <p><strong>Pregnancy Complications:</strong> <span id="complications">Loading...</span></p>
+  </div>
+
+  <div>
+    <p><strong>Nutrition / Supplements:</strong> <span id="nutrition">Loading...</span></p>
+  </div>
+</div>
+
+<!-- Lifestyle & Habits -->
+<div class="bg-white shadow-md rounded-lg p-6 mt-8 space-y-4 border border-yellow-200">
+  <h3 class="text-xl font-semibold text-yellow-700 mb-4">Lifestyle & Habits</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>Physical Activity Level:</strong> <span id="activityLevel">Loading...</span></p>
+    <p><strong>Average Sleep Duration (hrs):</strong> <span id="sleepHours">Loading...</span></p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>Addictions:</strong> <span id="addictions">Loading...</span></p>
+    <p><strong>Allergies:</strong> <span id="allergiesHabit">Loading...</span></p>
+  </div>
+
+  <div>
+    <p><strong>Daily Travel Distance (km):</strong> <span id="travel">Loading...</span></p>
+  </div>
+</div>
+
+<!-- Final Notes -->
+<div class="bg-white shadow-md rounded-lg p-6 mt-8 space-y-4 border border-gray-300">
+  <h3 class="text-xl font-semibold text-gray-700 mb-4">Final Notes</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p><strong>Additional Medical History:</strong> <span id="additionalHistory">Loading...</span></p>
+    <p><strong>Doctor's Notes:</strong> <span id="doctorNotes">Loading...</span></p>
+  </div>
+</div>
+
+
+  </main>
+  
+  
+
+  <!-- Footer Tip -->
+  <footer class="bg-white border-t border-blue-200 py-4 px-6 flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <img src="https://cdn-icons-png.flaticon.com/512/4385/4385049.png" alt="Tip Illustration" class="w-12 h-12 object-contain" />
+      <p id="footerTip" class="text-sm text-gray-600 italic">Tip loading...</p>
+    </div>
+    <button onclick="loadRandomProfileTip()" class="text-blue-600 text-sm hover:text-blue-800 transition">
+      <i class="fas fa-sync-alt mr-1"></i>New Tip
+    </button>
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="/static/js/profile.js"></script>
+</body>
+</html>
+

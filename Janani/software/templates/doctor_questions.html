@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Intake | Janani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/doctor_questions.css">
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 px-6 shadow">
+    <div class="text-xl font-bold">
+      <i class="fas fa-user-nurse mr-2"></i>Doctor Patient Form
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto mt-10 bg-white p-6 rounded shadow relative overflow-hidden">
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="w-full mb-6">
+      <div id="progressFill"></div>
+    </div>
+
+    <form id="questionsForm" class="space-y-6">
+
+      <!-- ✅ SECTION 1: Basic Personal Information -->
+      <section class="form-section">
+
+        <h2 class="text-xl font-semibold text-blue-700 mb-4">Section 1: Basic Details</h2>
+
+        <!-- Full Name -->
+        <div>
+          <label class="block font-medium mb-1">Full Name <span class="text-red-500">*</span></label>
+          <input type="text" name="name" required class="w-full border px-3 py-2 rounded" placeholder="e.g. Lakshmi Devi">
+        </div>
+
+        <!-- Age & Phone -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium mb-1">Age <span class="text-red-500">*</span></label>
+            <input type="number" name="age" min="15" max="50" required class="w-full border px-3 py-2 rounded" placeholder="e.g. 28">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Phone Number</label>
+            <input type="tel" name="phone" pattern="[0-9]{10}" class="w-full border px-3 py-2 rounded" placeholder="Optional, 10 digits only">
+          </div>
+        </div>
+
+        <!-- Address / Location -->
+        <div>
+          <label class="block font-medium mb-1">Location / Address <span class="text-red-500">*</span></label>
+          <input type="text" name="location" required class="w-full border px-3 py-2 rounded" placeholder="Village / Area / District">
+        </div>
+
+        <!-- Marital Status & Education -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium mb-1">Marital Status</label>
+            <select name="marital_status" class="w-full border px-3 py-2 rounded">
+              <option value="Married">Married</option>
+              <option value="Unmarried">Unmarried</option>
+              <option value="Widowed">Widowed</option>
+              <option value="Separated">Separated</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Education Level</label>
+            <select name="education" class="w-full border px-3 py-2 rounded">
+              <option value="None">None</option>
+              <option value="Primary">Primary School</option>
+              <option value="Secondary">Secondary / High School</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Occupation & Working Status -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium mb-1">Occupation</label>
+            <input type="text" name="occupation" class="w-full border px-3 py-2 rounded" placeholder="e.g. Farmer, Housewife">
+          </div>
+          <div>
+            <label class="block font-medium mb-1">Currently Working?</label>
+            <select name="is_working" class="w-full border px-3 py-2 rounded">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Languages Spoken -->
+        <div>
+          <label class="block font-medium mb-1">Languages Known</label>
+          <input type="text" name="languages" class="w-full border px-3 py-2 rounded" placeholder="e.g. Telugu, Hindi, English">
+        </div>
+
+        <!-- Navigation Button -->
+        <div class="text-right pt-4">
+          <button type="button" class="next-btn bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700">
+            Next <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </section>
+
+    </form>
+    
+    <!-- ✅ SECTION 2: Vitals & Medical History -->
+<section class="form-section hidden">
+  <div class="bg-white p-6 rounded-lg shadow-md border border-blue-200">
+
+    <h2 class="text-xl font-semibold text-blue-700 mb-4">Section 2: Vitals & Medical History</h2>
+
+    <!-- Height & Weight -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-medium mb-1">Height (in cm)</label>
+        <input type="number" name="height" min="100" max="200" class="w-full border px-3 py-2 rounded" placeholder="e.g. 160">
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Weight (in kg)</label>
+        <input type="number" name="weight" min="30" max="200" class="w-full border px-3 py-2 rounded" placeholder="e.g. 60">
+      </div>
+    </div>
+
+    <!-- BP & Sugar -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div>
+        <label class="block font-medium mb-1">Blood Pressure</label>
+        <input type="text" name="bp" class="w-full border px-3 py-2 rounded" placeholder="e.g. 120/80">
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Blood Sugar (mg/dL)</label>
+        <input type="number" name="sugar" class="w-full border px-3 py-2 rounded" placeholder="e.g. 90">
+      </div>
+    </div>
+
+    <!-- Existing Conditions -->
+    <div class="mt-4">
+      <label class="block font-medium mb-1">Pre-existing Medical Conditions</label>
+      <textarea name="existing_conditions" rows="2" class="w-full border px-3 py-2 rounded" placeholder="e.g. Diabetes, Thyroid, Asthma"></textarea>
+    </div>
+
+    <!-- Family Medical History -->
+    <div>
+      <label class="block font-medium mb-1 mt-4">Family Medical History</label>
+      <textarea name="family_history" rows="2" class="w-full border px-3 py-2 rounded" placeholder="e.g. Heart problems, Genetic disorders"></textarea>
+    </div>
+
+    <!-- Allergies -->
+    <div class="mt-4">
+      <label class="block font-medium mb-1">Known Allergies</label>
+      <textarea name="allergies" rows="2" class="w-full border px-3 py-2 rounded" placeholder="e.g. Penicillin, Dust, Pollen"></textarea>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between pt-6">
+      <button type="button" class="back-btn bg-gray-300 text-gray-800 px-5 py-2 rounded hover:bg-gray-400">
+        <i class="fas fa-arrow-left mr-2"></i>Back
+      </button>
+      <button type="button" class="next-btn bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700">
+        Next <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ SECTION 3: Pregnancy Details -->
+<section class="form-section hidden">
+  <div class="bg-white p-6 rounded-lg shadow-md border border-blue-200">
+
+    <h2 class="text-xl font-semibold text-blue-700 mb-4">Section 3: Pregnancy Details</h2>
+
+    <!-- Trimester & Expected Delivery Date -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-medium mb-1">Current Pregnancy Stage <span class="text-red-500">*</span></label>
+        <select name="pregnancy_stage" class="w-full border px-3 py-2 rounded" required>
+          <option value="">Select Trimester</option>
+          <option value="First Trimester">First Trimester</option>
+          <option value="Second Trimester">Second Trimester</option>
+          <option value="Third Trimester">Third Trimester</option>
+          <option value="Postpartum">Postpartum</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Expected Delivery Date <span class="text-red-500">*</span></label>
+        <input type="date" name="edd" class="w-full border px-3 py-2 rounded" required>
+      </div>
+    </div>
+
+    <!-- Number of Pregnancies & Live Births -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div>
+        <label class="block font-medium mb-1">Number of Previous Pregnancies</label>
+        <input type="number" name="gravida" min="0" class="w-full border px-3 py-2 rounded" placeholder="e.g. 2">
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Number of Live Births</label>
+        <input type="number" name="para" min="0" class="w-full border px-3 py-2 rounded" placeholder="e.g. 1">
+      </div>
+    </div>
+
+    <!-- Complications if any -->
+    <div class="mt-4">
+      <label class="block font-medium mb-1">Any Pregnancy Complications</label>
+      <textarea name="complications" rows="2" class="w-full border px-3 py-2 rounded" placeholder="e.g. Gestational diabetes, Preeclampsia, etc."></textarea>
+    </div>
+
+    <!-- Nutrition/Supplements -->
+    <div class="mt-4">
+      <label class="block font-medium mb-1">Current Nutrition / Supplements</label>
+      <textarea name="nutrition" rows="2" class="w-full border px-3 py-2 rounded" placeholder="e.g. Iron, Folic Acid, Calcium, etc."></textarea>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between pt-6">
+      <button type="button" class="back-btn bg-gray-300 text-gray-800 px-5 py-2 rounded hover:bg-gray-400">
+        <i class="fas fa-arrow-left mr-2"></i>Back
+      </button>
+      <button type="button" class="next-btn bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700">
+        Next <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ SECTION 4: Lifestyle & Habits -->
+<section class="form-section hidden">
+  <div class="bg-white p-6 rounded-lg shadow-md border border-blue-200">
+
+    <h2 class="text-xl font-semibold text-blue-700 mb-4">Section 4: Lifestyle & Habits</h2>
+
+    <!-- Physical Activity & Sleep -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-medium mb-1">Level of Physical Activity</label>
+        <select name="activity_level" class="w-full border px-3 py-2 rounded">
+          <option value="">Select Activity Level</option>
+          <option value="Sedentary">Sedentary</option>
+          <option value="Lightly Active">Lightly Active</option>
+          <option value="Moderately Active">Moderately Active</option>
+          <option value="Very Active">Very Active</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Average Sleep Duration (hrs)</label>
+        <input type="number" name="sleep_hours" min="0" max="24" class="w-full border px-3 py-2 rounded" placeholder="e.g. 7">
+      </div>
+    </div>
+
+    <!-- Addictions & Allergies -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div>
+        <label class="block font-medium mb-1">Any Addictions</label>
+        <input type="text" name="addictions" class="w-full border px-3 py-2 rounded" placeholder="e.g. Smoking, Alcohol, etc.">
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Known Allergies</label>
+        <input type="text" name="allergies" class="w-full border px-3 py-2 rounded" placeholder="e.g. Penicillin, Peanuts, etc.">
+      </div>
+    </div>
+
+    <!-- Travel Distance -->
+    <div class="mt-4">
+      <label class="block font-medium mb-1">Average Travel Distance Daily (in km)</label>
+      <input type="number" name="travel_distance" min="0" class="w-full border px-3 py-2 rounded" placeholder="e.g. 5">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between pt-6">
+      <button type="button" class="back-btn bg-gray-300 text-gray-800 px-5 py-2 rounded hover:bg-gray-400">
+        <i class="fas fa-arrow-left mr-2"></i>Back
+      </button>
+      <button type="button" class="next-btn bg-blue-600 text-white px-5 py-2 rounded shadow hover:bg-blue-700">
+        Next <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ SECTION 5: Final Observations & Notes -->
+<section class="form-section hidden">
+  <div class="bg-white p-6 rounded-lg shadow-md border border-blue-200">
+
+    <h2 class="text-xl font-semibold text-blue-700 mb-4">Section 5: Final Observations & Notes</h2>
+
+    <!-- Additional Medical History -->
+    <div class="mb-4">
+      <label class="block font-medium mb-1">Any Additional Medical History</label>
+      <textarea name="additional_history" rows="3" class="w-full border px-3 py-2 rounded" placeholder="e.g. thyroid, PCOS, anemia, etc."></textarea>
+    </div>
+
+    <!-- Family Medical History -->
+    <div class="mb-4">
+      <label class="block font-medium mb-1">Relevant Family Medical History</label>
+      <textarea name="family_history" rows="3" class="w-full border px-3 py-2 rounded" placeholder="e.g. maternal hypertension, diabetes, etc."></textarea>
+    </div>
+
+    <!-- Doctor's Notes -->
+    <div class="mb-4">
+      <label class="block font-medium mb-1">Doctor's Observations / Remarks</label>
+      <textarea name="doctor_notes" rows="4" class="w-full border px-3 py-2 rounded" placeholder="Summarize your analysis or remarks here..."></textarea>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between pt-6">
+      <button type="button" class="back-btn bg-gray-300 text-gray-800 px-5 py-2 rounded hover:bg-gray-400">
+        <i class="fas fa-arrow-left mr-2"></i>Back
+      </button>
+      <button type="submit" id="submit-btn" class="submit-btn bg-green-600 text-white px-5 py-2 rounded shadow hover:bg-green-700">
+        <i class="fas fa-save mr-2"></i>Submit & Save
+      </button>
+    </div>
+
+  </div>
+</section>
+
+  </main>
+  
+  
+
+  <!-- Custom JS -->
+  <script src="/static/js/doctor_questions.js"></script>
+</body>
+</html>
+
